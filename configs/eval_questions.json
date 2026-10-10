@@ -1,0 +1,138 @@
+{
+  "evaluation_set": {
+    "description": "Evaluation questions for the Intelligent Knowledge Assistant. Covers simple RAG, multi-step/comparison, ambiguous, and unanswerable categories.",
+    "version": "1.0",
+    "questions": [
+      {
+        "id": "simple_01",
+        "category": "simple_rag",
+        "question": "What is Retrieval-Augmented Generation (RAG) and how does it work?",
+        "expected_workflow": "simple_rag",
+        "expected_sources": ["rag_architecture_patterns.pdf"],
+        "expected_answer_contains": ["retrieve", "generate", "knowledge base"],
+        "notes": "Foundational question answerable from the RAG patterns document introduction."
+      },
+      {
+        "id": "simple_02",
+        "category": "simple_rag",
+        "question": "What are the main types of chunking strategies discussed for RAG systems?",
+        "expected_workflow": "simple_rag",
+        "expected_sources": ["rag_architecture_patterns.pdf"],
+        "expected_answer_contains": ["fixed-size", "semantic", "recursive"],
+        "notes": "Direct factual question from a single document section."
+      },
+      {
+        "id": "simple_03",
+        "category": "simple_rag",
+        "question": "What is the HNSW algorithm and what are its key parameters?",
+        "expected_workflow": "simple_rag",
+        "expected_sources": ["vector_database_comparison.pdf"],
+        "expected_answer_contains": ["HNSW", "graph", "approximate nearest neighbor"],
+        "notes": "Technical detail from the vector database document."
+      },
+      {
+        "id": "simple_04",
+        "category": "simple_rag",
+        "question": "What is the ReAct orchestration pattern in agentic AI?",
+        "expected_workflow": "simple_rag",
+        "expected_sources": ["agentic_ai_frameworks.pdf"],
+        "expected_answer_contains": ["reasoning", "acting", "observation"],
+        "notes": "Single-concept question from the agentic frameworks document."
+      },
+      {
+        "id": "simple_05",
+        "category": "simple_rag",
+        "question": "What evaluation metrics are recommended for RAG systems?",
+        "expected_workflow": "simple_rag",
+        "expected_sources": ["rag_architecture_patterns.pdf"],
+        "expected_answer_contains": ["precision", "recall", "faithfulness"],
+        "notes": "Factual list from the evaluation section."
+      },
+      {
+        "id": "multi_01",
+        "category": "multi_step",
+        "question": "Compare ChromaDB and Pinecone for a production RAG system. What are the key tradeoffs in terms of performance, cost, and scalability?",
+        "expected_workflow": "agentic",
+        "expected_sources": ["vector_database_comparison.pdf", "rag_architecture_patterns.pdf"],
+        "expected_answer_contains": ["Chroma", "Pinecone", "production", "scalability"],
+        "notes": "Requires comparing two databases and relating to production RAG requirements."
+      },
+      {
+        "id": "multi_02",
+        "category": "multi_step",
+        "question": "If I'm building a RAG system with LangGraph, which vector database should I use and why?",
+        "expected_workflow": "agentic",
+        "expected_sources": ["agentic_ai_frameworks.pdf", "vector_database_comparison.pdf", "rag_architecture_patterns.pdf"],
+        "expected_answer_contains": ["LangGraph", "vector database"],
+        "notes": "Cross-document: needs LangGraph info + vector DB comparison + RAG requirements."
+      },
+      {
+        "id": "multi_03",
+        "category": "multi_step",
+        "question": "How do the chunking strategies discussed in the RAG architecture document affect retrieval quality, and which vector databases handle different chunk sizes best?",
+        "expected_workflow": "agentic",
+        "expected_sources": ["rag_architecture_patterns.pdf", "vector_database_comparison.pdf"],
+        "expected_answer_contains": ["chunking", "retrieval", "vector database"],
+        "notes": "Multi-step: chunking impact on retrieval + vector DB performance characteristics."
+      },
+      {
+        "id": "multi_04",
+        "category": "multi_step",
+        "question": "Compare LangGraph and CrewAI for building a knowledge assistant. What does each framework offer and which is better suited for RAG applications?",
+        "expected_workflow": "agentic",
+        "expected_sources": ["agentic_ai_frameworks.pdf"],
+        "expected_answer_contains": ["LangGraph", "CrewAI", "comparison"],
+        "notes": "Comparison question requiring synthesis of two framework descriptions."
+      },
+      {
+        "id": "multi_05",
+        "category": "multi_step",
+        "question": "What security considerations should I address when deploying a RAG system at scale, considering both the RAG pipeline and the underlying infrastructure?",
+        "expected_workflow": "agentic",
+        "expected_sources": ["rag_architecture_patterns.pdf", "vector_database_comparison.pdf", "agentic_ai_frameworks.pdf"],
+        "expected_answer_contains": ["security", "prompt injection", "access control"],
+        "notes": "Cross-document security topic requiring synthesis from multiple sources."
+      },
+      {
+        "id": "ambiguous_01",
+        "category": "ambiguous",
+        "question": "What's the best approach?",
+        "expected_workflow": "simple_rag",
+        "expected_answer_contains": [],
+        "notes": "Too vague — system should note ambiguity or ask for clarification."
+      },
+      {
+        "id": "ambiguous_02",
+        "category": "ambiguous",
+        "question": "Tell me about vectors.",
+        "expected_workflow": "simple_rag",
+        "expected_answer_contains": ["vector"],
+        "notes": "Ambiguous — could mean vector databases, embeddings, or ANN algorithms."
+      },
+      {
+        "id": "ambiguous_03",
+        "category": "ambiguous",
+        "question": "How does it compare to the alternatives?",
+        "expected_workflow": "simple_rag",
+        "expected_answer_contains": [],
+        "notes": "No referent for 'it' — system should note the ambiguity."
+      },
+      {
+        "id": "unanswerable_01",
+        "category": "unanswerable",
+        "question": "What is the pricing for OpenAI GPT-4o API calls per million tokens?",
+        "expected_workflow": "simple_rag",
+        "expected_answer_contains": ["don't have enough information"],
+        "notes": "Pricing details are not in the corpus."
+      },
+      {
+        "id": "unanswerable_02",
+        "category": "unanswerable",
+        "question": "How do I deploy a RAG system on Kubernetes with Helm charts?",
+        "expected_workflow": "simple_rag",
+        "expected_answer_contains": ["don't have enough information"],
+        "notes": "Kubernetes deployment is not covered in the corpus."
+      }
+    ]
+  }
+}

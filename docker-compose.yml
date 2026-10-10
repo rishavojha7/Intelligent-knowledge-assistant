@@ -1,0 +1,40 @@
+# =============================================================================
+# Intelligent Knowledge Assistant — Docker Compose
+# Single-command deployment: docker-compose up
+# =============================================================================
+
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: knowledge-assistant
+    ports:
+      - "${API_PORT:-8000}:8000"
+      - "${STREAMLIT_PORT:-8501}:8501"
+    volumes:
+      # Persist ChromaDB data across container restarts
+      - chromadb_data:/app/data/chromadb
+      # Mount corpus as read-only (allows updating PDFs without rebuilding)
+      - ./corpus:/app/corpus:ro
+    env_file:
+      - .env
+    environment:
+      - CHROMA_PERSIST_DIR=/app/data/chromadb
+      - CORPUS_DIR=/app/corpus
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - STREAMLIT_PORT=8501
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health"]
+      interval: 30s
+      timeout: 10s
+      start_period: 60s
+      retries: 3
+    restart: unless-stopped
+
+volumes:
+  chromadb_data:
+    driver: local

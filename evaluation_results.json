@@ -1,0 +1,417 @@
+{
+  "metrics": {
+    "total_questions": 15,
+    "successful": 15,
+    "errors": 0,
+    "routing_accuracy": 0.8,
+    "avg_source_recall": 0.667,
+    "avg_content_recall": 0.778,
+    "unanswerable_refusal_rate": 0.5,
+    "avg_latency_seconds": 19.21,
+    "per_category": {
+      "simple_rag": {
+        "count": 5,
+        "avg_content_recall": 0.667,
+        "avg_source_recall": 1.0
+      },
+      "multi_step": {
+        "count": 5,
+        "avg_content_recall": 0.867,
+        "avg_source_recall": 0.0
+      },
+      "ambiguous": {
+        "count": 3,
+        "avg_content_recall": 1.0,
+        "avg_source_recall": 1.0
+      },
+      "unanswerable": {
+        "count": 2,
+        "avg_content_recall": 0.5,
+        "avg_source_recall": 1.0
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "simple_01",
+      "category": "simple_rag",
+      "question": "What is Retrieval-Augmented Generation (RAG) and how does it work?",
+      "answer": "Retrieval-Augmented Generation (RAG) is a system that grounds the outputs of large language models (LLMs) in verifiable, up-to-date external knowledge. This approach significantly reduces hallucination rates and enables domain-specific applications without requiring full fine-tuning of the LLM [rag_architecture_patterns.pdf, Page 3].\n\nRAG operates using a \"Retrieve-Then-Generate\" paradigm, which consists of three main stages executed at query time:\n\n1. **Retrieval**: A user query is embedded int",
+      "workflow_used": "simple_rag",
+      "workflow_expected": "simple_rag",
+      "route_correct": true,
+      "sources_found": [
+        "rag_architecture_patterns.pdf",
+        "agentic_ai_frameworks.pdf"
+      ],
+      "sources_expected": [
+        "rag_architecture_patterns.pdf"
+      ],
+      "source_recall": 1.0,
+      "content_recall": 0.667,
+      "confidence": "high",
+      "reasoning_steps": [
+        "Router: classified as 'simple_rag' \u2014 The question asks for a definition and a basic explanation of how RAG works, which can be answered with a single retrieval from a document section explaining RAG concepts.",
+        "Retrieved 5 relevant chunks",
+        "Average relevance score: 0.847",
+        "Generated answer from context with citations"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 18.08,
+      "error": null
+    },
+    {
+      "id": "simple_02",
+      "category": "simple_rag",
+      "question": "What are the main types of chunking strategies discussed for RAG systems?",
+      "answer": "The main type of chunking strategy discussed for RAG systems is **Fixed-Size Chunking**. This involves splitting documents into chunks of exactly N characters (or tokens), with an optional overlap of O characters to preserve context across boundaries. Recommended sizes are 256-512 tokens for dense QA tasks and 512-1024 tokens for document summarization, with an overlap of 10-15% of the chunk size (e.g., 50 tokens for 512-token chunks) [rag_architecture_patterns.pdf, Page 3].",
+      "workflow_used": "simple_rag",
+      "workflow_expected": "simple_rag",
+      "route_correct": true,
+      "sources_found": [
+        "rag_architecture_patterns.pdf"
+      ],
+      "sources_expected": [
+        "rag_architecture_patterns.pdf"
+      ],
+      "source_recall": 1.0,
+      "content_recall": 0.333,
+      "confidence": "high",
+      "reasoning_steps": [
+        "Router: classified as 'simple_rag' \u2014 The question asks for a straightforward listing of chunking strategies, which can typically be answered by retrieving information from a single section or two of a document discussing chunking strategies for RAG systems.",
+        "Retrieved 5 relevant chunks",
+        "Average relevance score: 0.747",
+        "Generated answer from context with citations"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 11.06,
+      "error": null
+    },
+    {
+      "id": "simple_03",
+      "category": "simple_rag",
+      "question": "What is the HNSW algorithm and what are its key parameters?",
+      "answer": "The HNSW (Hierarchical Navigable Small World) algorithm is a graph-based approximate nearest neighbour (ANN) search method. It is considered the de-facto standard for ANN search due to its excellent tradeoff between recall and speed, achieving O(log N) query time. It is widely implemented in vector database systems like FAISS, Qdrant, Weaviate, and Chroma. HNSW provides high recall rates (95-99% recall@10) with low latency (e.g., 1ms for 1M vectors) but has high memory usage [vector_database_com",
+      "workflow_used": "simple_rag",
+      "workflow_expected": "simple_rag",
+      "route_correct": true,
+      "sources_found": [
+        "rag_architecture_patterns.pdf",
+        "vector_database_comparison.pdf"
+      ],
+      "sources_expected": [
+        "vector_database_comparison.pdf"
+      ],
+      "source_recall": 1.0,
+      "content_recall": 0.667,
+      "confidence": "high",
+      "reasoning_steps": [
+        "Router: classified as 'simple_rag' \u2014 The question asks for an explanation of the HNSW algorithm and its key parameters, which can be answered with a single retrieval from a document section that explains HNSW and lists its parameters. No multi-step reasoning or cross-document synthesis is required.",
+        "Retrieved 5 relevant chunks",
+        "Average relevance score: 0.766",
+        "Generated answer from context with citations"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 12.14,
+      "error": null
+    },
+    {
+      "id": "simple_04",
+      "category": "simple_rag",
+      "question": "What is the ReAct orchestration pattern in agentic AI?",
+      "answer": "The ReAct orchestration pattern in agentic AI interleaves reasoning and acting in a loop. It follows the sequence: **Thought -> Action[tool] -> Observation[result]**, repeating this process until a final answer is reached. This pattern grounds reasoning in external observations, making it suitable for general-purpose tool use and providing interpretable traces. Key advantages include its simplicity and traceability, while its main drawbacks are its greedy nature, lack of backtracking, and an ove",
+      "workflow_used": "simple_rag",
+      "workflow_expected": "simple_rag",
+      "route_correct": true,
+      "sources_found": [
+        "agentic_ai_frameworks.pdf"
+      ],
+      "sources_expected": [
+        "agentic_ai_frameworks.pdf"
+      ],
+      "source_recall": 1.0,
+      "content_recall": 1.0,
+      "confidence": "high",
+      "reasoning_steps": [
+        "Router: classified as 'simple_rag' \u2014 The question asks for a definition or explanation of the ReAct orchestration pattern, which can likely be found in a single section of a document focused on agentic AI frameworks. It does not require multi-step reasoning or synthesis.",
+        "Retrieved 5 relevant chunks",
+        "Average relevance score: 0.685",
+        "Generated answer from context with citations"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 11.39,
+      "error": null
+    },
+    {
+      "id": "simple_05",
+      "category": "simple_rag",
+      "question": "What evaluation metrics are recommended for RAG systems?",
+      "answer": "The recommended evaluation metrics for RAG systems include:\n\n1. **Retrieval Quality Metrics**:\n   - **Context Precision**: Assesses whether the retrieved chunks contain the ground-truth answer.\n   - **Context Recall**: Measures the fraction of ground-truth answer statements that can be attributed to the retrieved context [rag_architecture_patterns.pdf, Page 9].\n\n2. **Generation Quality Metrics**:\n   - Evaluates whether the generated answer is correct, faithful, and complete [rag_architecture_pat",
+      "workflow_used": "simple_rag",
+      "workflow_expected": "simple_rag",
+      "route_correct": true,
+      "sources_found": [
+        "rag_architecture_patterns.pdf",
+        "vector_database_comparison.pdf"
+      ],
+      "sources_expected": [
+        "rag_architecture_patterns.pdf"
+      ],
+      "source_recall": 1.0,
+      "content_recall": 0.667,
+      "confidence": "high",
+      "reasoning_steps": [
+        "Router: classified as 'simple_rag' \u2014 The question asks for recommended evaluation metrics for RAG systems, which can likely be answered by retrieving information from a single section or document focused on evaluation metrics for RAG systems.",
+        "Retrieved 5 relevant chunks",
+        "Average relevance score: 0.759",
+        "Generated answer from context with citations"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 10.56,
+      "error": null
+    },
+    {
+      "id": "multi_01",
+      "category": "multi_step",
+      "question": "Compare ChromaDB and Pinecone for a production RAG system. What are the key tradeoffs in terms of performance, cost, and scalability?",
+      "answer": "### ChromaDB in Production RAG Systems\n- **Performance**: Chroma is designed for prototyping and is not production-grade for systems exceeding 1 million vectors. It supports in-memory and persistent modes (SQLite + hnswlib) but lacks replication, hybrid search, and horizontal scaling.\n- **Cost**: Chroma is free under the Apache 2.0 license, making it ideal for hackathons, notebooks, and developer onboarding.\n- **Scalability**: Limited to single-node setups with a ceiling of approximately 1 milli",
+      "workflow_used": "agentic",
+      "workflow_expected": "agentic",
+      "route_correct": true,
+      "sources_found": [],
+      "sources_expected": [
+        "vector_database_comparison.pdf",
+        "rag_architecture_patterns.pdf"
+      ],
+      "source_recall": 0.0,
+      "content_recall": 1.0,
+      "confidence": "medium",
+      "reasoning_steps": [
+        "Router: classified as 'agentic' \u2014 The question requires a detailed comparison of ChromaDB and Pinecone across multiple dimensions (performance, cost, scalability). This involves synthesizing information from multiple sources and potentially cross-referencing different aspects of RAG systems, making it a multi-step reasoning task.",
+        "Agent iteration 1: calling search_by_document, search_by_document",
+        "Agent iteration 2: generating final response"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 19.82,
+      "error": null
+    },
+    {
+      "id": "multi_02",
+      "category": "multi_step",
+      "question": "If I'm building a RAG system with LangGraph, which vector database should I use and why?",
+      "answer": "### LangGraph Features and Compatibility with Vector Databases\nLangGraph is a framework designed for production agentic workflows, offering features like explicit state graphs, native cycles, parallel branches, and sub-graphs. It supports checkpointing for human-in-the-loop (HITL) gates, resumability, and time-travel debugging. LangGraph is particularly suited for complex multi-step reasoning tasks and long-running resumable workflows. It integrates with all LangChain tools and supports pre-load",
+      "workflow_used": "agentic",
+      "workflow_expected": "agentic",
+      "route_correct": true,
+      "sources_found": [],
+      "sources_expected": [
+        "agentic_ai_frameworks.pdf",
+        "vector_database_comparison.pdf",
+        "rag_architecture_patterns.pdf"
+      ],
+      "source_recall": 0.0,
+      "content_recall": 1.0,
+      "confidence": "medium",
+      "reasoning_steps": [
+        "Router: classified as 'agentic' \u2014 The question requires evaluating multiple vector databases in the context of their compatibility and performance with LangGraph. This involves cross-document comparison and synthesis of information about both LangGraph and various vector databases.",
+        "Agent iteration 1: calling search_by_document, search_by_document",
+        "Agent iteration 2: generating final response"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 16.46,
+      "error": null
+    },
+    {
+      "id": "multi_03",
+      "category": "multi_step",
+      "question": "How do the chunking strategies discussed in the RAG architecture document affect retrieval quality, and which vector databases handle different chunk sizes best?",
+      "answer": "### Chunking Strategies and Their Impact on Retrieval Quality\n\n#### Insights from \"RAG Architecture Patterns\"\n1. **Chunking as a Critical Parameter**:\n   - Chunking is the atomic unit of retrieval in RAG systems, and its size and boundaries significantly influence retrieval quality.\n   - Fixed-size chunking is commonly used, with recommended sizes of 256-512 tokens for dense QA tasks and 512-1024 tokens for document summarization. Overlap of 10-15% of the chunk size is suggested to maintain cont",
+      "workflow_used": "agentic",
+      "workflow_expected": "agentic",
+      "route_correct": true,
+      "sources_found": [],
+      "sources_expected": [
+        "rag_architecture_patterns.pdf",
+        "vector_database_comparison.pdf"
+      ],
+      "source_recall": 0.0,
+      "content_recall": 1.0,
+      "confidence": "medium",
+      "reasoning_steps": [
+        "Router: classified as 'agentic' \u2014 The question requires analyzing the impact of chunking strategies on retrieval quality, which involves synthesizing information from the RAG architecture document. Additionally, it asks for a comparison of how different vector databases handle chunk sizes, necessitating cross-document analysis and multi-step reasoning.",
+        "Agent iteration 1: calling search_by_document, search_by_document",
+        "Agent iteration 2: generating final response"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 19.44,
+      "error": null
+    },
+    {
+      "id": "multi_04",
+      "category": "multi_step",
+      "question": "Compare LangGraph and CrewAI for building a knowledge assistant. What does each framework offer and which is better suited for RAG applications?",
+      "answer": "### LangGraph Features for Building Knowledge Assistants\nLangGraph is a graph-based stateful orchestration framework built on LangChain. It replaces LangChain's opaque AgentExecutor loop with an explicit directed graph where every routing decision is auditable code. Key features include:\n- **Explicit State Graph**: Every routing decision is auditable.\n- **Native Cycles and Parallel Branches**: Supports complex workflows with cycles and sub-graphs.\n- **Checkpointing**: Persistent state snapshots ",
+      "workflow_used": "agentic",
+      "workflow_expected": "agentic",
+      "route_correct": true,
+      "sources_found": [],
+      "sources_expected": [
+        "agentic_ai_frameworks.pdf"
+      ],
+      "source_recall": 0.0,
+      "content_recall": 0.667,
+      "confidence": "medium",
+      "reasoning_steps": [
+        "Router: classified as 'agentic' \u2014 The question requires a detailed comparison of two frameworks, LangGraph and CrewAI, including their features and suitability for RAG applications. This involves synthesizing information from multiple sources and performing a comparative analysis, which is beyond a single retrieval step.",
+        "Agent iteration 1: calling search_by_document, search_by_document, search_by_document, search_by_document",
+        "Agent iteration 2: generating final response"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 92.07,
+      "error": null
+    },
+    {
+      "id": "multi_05",
+      "category": "multi_step",
+      "question": "What security considerations should I address when deploying a RAG system at scale, considering both the RAG pipeline and the underlying infrastructure?",
+      "answer": "Here are the security considerations for deploying RAG systems, vector databases, and agentic AI frameworks:\n\n### RAG Systems\n1. **Evaluation Loop**: Deploying RAG without automated evaluation can lead to undetected regressions. Integrating tools like RAGAS into CI/CD pipelines ensures continuous evaluation of prompt templates and chunking strategies.\n2. **Data Integrity**: Stale documents in the corpus can degrade answer quality. Implement document TTL policies and re-indexing triggers (e.g., v",
+      "workflow_used": "agentic",
+      "workflow_expected": "agentic",
+      "route_correct": true,
+      "sources_found": [],
+      "sources_expected": [
+        "rag_architecture_patterns.pdf",
+        "vector_database_comparison.pdf",
+        "agentic_ai_frameworks.pdf"
+      ],
+      "source_recall": 0.0,
+      "content_recall": 0.667,
+      "confidence": "medium",
+      "reasoning_steps": [
+        "Router: classified as 'agentic' \u2014 The question requires analyzing multiple aspects of security, including the RAG pipeline and the underlying infrastructure. This involves synthesizing information from different topics, such as data privacy, model security, and infrastructure vulnerabilities, making it a multi-step reasoning task.",
+        "Agent iteration 1: calling search_by_document, search_by_document, search_by_document",
+        "Agent iteration 2: generating final response"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 20.98,
+      "error": null
+    },
+    {
+      "id": "ambiguous_01",
+      "category": "ambiguous",
+      "question": "What's the best approach?",
+      "answer": "Your question is too broad for me to provide a specific answer. Could you clarify what you're asking about? For example:\n\n- Are you asking about the best approach for designing a Retrieval-Augmented Generation (RAG) system?\n- Are you looking for the best vector database for a specific use case?\n- Are you asking about the best agentic AI framework for a particular application?\n\nPlease provide more details so I can assist you effectively!",
+      "workflow_used": "agentic",
+      "workflow_expected": "simple_rag",
+      "route_correct": false,
+      "sources_found": [],
+      "sources_expected": [],
+      "source_recall": 1.0,
+      "content_recall": 1.0,
+      "confidence": "medium",
+      "reasoning_steps": [
+        "Router: classified as 'agentic' \u2014 The question 'What's the best approach?' is too vague and open-ended, requiring context, comparison, and synthesis of multiple factors to determine the best approach for a specific scenario. This makes it a multi-step reasoning task.",
+        "Agent iteration 1: generating final response"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 10.73,
+      "error": null
+    },
+    {
+      "id": "ambiguous_02",
+      "category": "ambiguous",
+      "question": "Tell me about vectors.",
+      "answer": "Vectors, in the context of vector databases, are high-dimensional numerical representations (embeddings) of unstructured data. These embeddings are used to index and query data based on semantic similarity rather than exact matches. Vector databases employ approximate nearest neighbor (ANN) algorithms to find the most semantically similar items, making them essential for applications like Retrieval-Augmented Generation (RAG) pipelines, recommendation engines, and semantic search [vector_database",
+      "workflow_used": "simple_rag",
+      "workflow_expected": "simple_rag",
+      "route_correct": true,
+      "sources_found": [
+        "vector_database_comparison.pdf",
+        "agentic_ai_frameworks.pdf"
+      ],
+      "sources_expected": [],
+      "source_recall": 1.0,
+      "content_recall": 1.0,
+      "confidence": "low",
+      "reasoning_steps": [
+        "Router: classified as 'simple_rag' \u2014 The question 'Tell me about vectors' is broad but can be addressed with a single retrieval from a document section that explains the concept of vectors in the context of RAG systems or vector databases. It does not require multi-step reasoning or synthesis.",
+        "Retrieved 5 relevant chunks",
+        "Average relevance score: 0.596",
+        "Generated answer from context with citations"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 9.78,
+      "error": null
+    },
+    {
+      "id": "ambiguous_03",
+      "category": "ambiguous",
+      "question": "How does it compare to the alternatives?",
+      "answer": "Your question is quite broad, so I need clarification on what \"it\" refers to. Are you asking about a specific technology, framework, or concept? For example:\n\n- A specific **vector database** (e.g., FAISS vs. Pinecone)?\n- A **RAG architecture pattern** compared to others?\n- An **agentic AI framework** (e.g., LangChain vs. AutoGen)?\n\nPlease provide more details so I can perform a focused comparison.",
+      "workflow_used": "agentic",
+      "workflow_expected": "simple_rag",
+      "route_correct": false,
+      "sources_found": [],
+      "sources_expected": [],
+      "source_recall": 1.0,
+      "content_recall": 1.0,
+      "confidence": "medium",
+      "reasoning_steps": [
+        "Router: classified as 'agentic' \u2014 The question requires a comparison between multiple alternatives, which involves synthesizing information from different sources or sections. This makes it a multi-step reasoning task.",
+        "Agent iteration 1: generating final response"
+      ],
+      "graceful_refusal": null,
+      "latency_seconds": 7.61,
+      "error": null
+    },
+    {
+      "id": "unanswerable_01",
+      "category": "unanswerable",
+      "question": "What is the pricing for OpenAI GPT-4o API calls per million tokens?",
+      "answer": "I don't have enough information in the available documents to answer this question. The context does not provide pricing details for OpenAI GPT-40 API calls per million tokens.",
+      "workflow_used": "simple_rag",
+      "workflow_expected": "simple_rag",
+      "route_correct": true,
+      "sources_found": [
+        "rag_architecture_patterns.pdf",
+        "agentic_ai_frameworks.pdf"
+      ],
+      "sources_expected": [],
+      "source_recall": 1.0,
+      "content_recall": 1.0,
+      "confidence": "low",
+      "reasoning_steps": [
+        "Router: classified as 'simple_rag' \u2014 The question seeks specific information about the pricing of OpenAI GPT-4o API calls, which is likely to be found in a single section of a document or pricing table. It does not require multi-step reasoning or synthesis.",
+        "Retrieved 4 relevant chunks",
+        "Average relevance score: 0.607",
+        "Generated answer from context with citations"
+      ],
+      "graceful_refusal": true,
+      "latency_seconds": 9.75,
+      "error": null
+    },
+    {
+      "id": "unanswerable_02",
+      "category": "unanswerable",
+      "question": "How do I deploy a RAG system on Kubernetes with Helm charts?",
+      "answer": "The documents do not provide specific details about deploying a Retrieval-Augmented Generation (RAG) system on Kubernetes using Helm charts. However, they do outline the architecture and best practices for deploying RAG systems in production environments. Here are some key points:\n\n1. **Pipeline Architecture**:\n   - A production RAG system typically consists of two pipelines:\n     - **Offline Indexing Pipeline**: For preparing and indexing data.\n     - **Online Query Pipeline**: For handling use",
+      "workflow_used": "agentic",
+      "workflow_expected": "simple_rag",
+      "route_correct": false,
+      "sources_found": [],
+      "sources_expected": [],
+      "source_recall": 1.0,
+      "content_recall": 0.0,
+      "confidence": "medium",
+      "reasoning_steps": [
+        "Router: classified as 'agentic' \u2014 Deploying a RAG system on Kubernetes with Helm charts involves multiple steps, including understanding Kubernetes, Helm, and the specific requirements of the RAG system. It requires synthesizing information from different topics and potentially comparing deployment strategies, making it a multi-step reasoning task.",
+        "Agent iteration 1: calling search_knowledge_base",
+        "Agent iteration 2: calling search_by_document",
+        "Agent iteration 3: generating final response"
+      ],
+      "graceful_refusal": false,
+      "latency_seconds": 18.29,
+      "error": null
+    }
+  ]
+}
